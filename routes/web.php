@@ -1,6 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
+use App\Models\Sekolah;
+use Illuminate\Support\Facades\Route; 
+use App\Models\Siswa;  
+use App\Models\Film;  
+// import controller 
+use App\Http\Controllers\MyController; 
+// import Movie Controller 
+use App\Http\Controllers\MovieController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +47,33 @@ Route::get('/about', function () {
 Route::get('/sample/{nama}', function (Request $request, $nama) {
     $nama2 = $nama; 
     return view('sample',compact('nama2'));
-});
+}); 
+
+Route::get('sekolah', function(){
+    return view('Sekolah');
+}); 
+
+Route::get('siswa', function(){
+    return view('Siswa');
+}); 
+
+Route::get('album', function(){
+    return view('album');
+}); 
+
+Route::get('film', function(){
+    return view('film');
+}); 
+
+Route::get('film/{id}', function(int $id){ 
+    // $film = Film::find($id); 
+    return view('detail_film', ['film' => Film::find($id)]);
+});  
+
+// route with controller 
+Route::get('perkenalan',[App\Http\Controllers\MyController::class,'introduce']);
+Route::get('hewan',[App\Http\Controllers\MyController::class,'animals']); 
+
+// route movie  
+Route::get('movie', [MovieController::class, 'getMovie']);
+Route::get('movie/{id}', [MovieController::class, 'getMovieById']);
