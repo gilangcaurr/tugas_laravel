@@ -4,11 +4,13 @@
 use App\Models\Sekolah;
 use Illuminate\Support\Facades\Route; 
 use App\Models\Siswa;  
-use App\Models\Film;  
+use App\Models\Film;   
+use App\Models\Artikel;
 // import controller 
 use App\Http\Controllers\MyController; 
 // import Movie Controller 
-use App\Http\Controllers\MovieController;
+use App\Http\Controllers\MovieController; 
+use App\Http\Controllers\ArtikelController;
 
 
 /*
@@ -76,4 +78,12 @@ Route::get('hewan',[App\Http\Controllers\MyController::class,'animals']);
 
 // route movie  
 Route::get('movie', [MovieController::class, 'getMovie']);
-Route::get('movie/{id}', [MovieController::class, 'getMovieById']);
+Route::get('movie/{id}', [MovieController::class, 'getMovieById']); 
+
+Route::get('artikel', [ArtikelController::class, 'getArtikel']); 
+Route::get('artikel/id/{id}', [ArtikelController::class, 'getArtikelById']); 
+Route::get('artikel/kategori/{kategori}', [ArtikelController::class, 'getArtikelByKategori']); 
+
+
+
+ 
