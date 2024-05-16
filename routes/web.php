@@ -11,7 +11,8 @@ use App\Http\Controllers\MyController;
 // import Movie Controller 
 use App\Http\Controllers\MovieController; 
 use App\Http\Controllers\ArtikelController;
-
+use App\Http\Controllers\GenreController; 
+use App\Http\Controllers\BukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,5 +92,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // route crud
 use App\Http\Controllers\PenulisController;
-Route::resource('penulis', PenulisController::class);
+Route::resource('penulis', PenulisController::class); 
+Route::resource('buku', BukuController::class);
+Route::resource('genre', GenreController::class);
+
 
