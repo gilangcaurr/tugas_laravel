@@ -86,7 +86,7 @@ class BukuController extends Controller
         ]);
 
         $buku = Buku::findOrFail($id);
-        $buku->judul = $request->judul;
+        $buku->judul = $request->judul; 
         $buku->isbn = $request->isbn;
         $buku->jml_halaman = $request->jml_halaman;
         $buku->deskripsi = $request->deskripsi;

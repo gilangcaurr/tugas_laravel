@@ -14,38 +14,43 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Penulis</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                @php $no = 1; @endphp
-                                @foreach ($penulis as $item)
+                            <table class="table table-bordered" id="datatable">
+                                <thead>
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->nama_penulis }}</td>
-                                        <td>
-                                            <form action="{{ route('penulis.destroy', $item->id) }}" id="delete-data"
-                                                method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <a href="{{ route('penulis.edit', $item->id) }}"
-                                                    class="btn btn-sm btn-success">
-                                                    Edit
-                                                </a>
-                                                <a href="{{ route('penulis.show', $item->id) }}"
-                                                    class="btn btn-sm btn-warning">
-                                                    Show
-                                                </a>
-
-                                                <button class="btn btn-sm btn-danger" type="submit"
-                                                    onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
-                                                    Delete</button>
-                                            </form>
-                                        </td>
+                                        <th>No</th>
+                                        <th>Nama Penulis</th>
+                                        <th>Aksi</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                          
+                                @php $no = 1; @endphp
+                                <tbody>
+                                    @foreach ($penulis as $item)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $item->nama_penulis }}</td>
+                                            <td>
+                                                <form action="{{ route('penulis.destroy', $item->id) }}" id="delete-data"
+                                                    method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <a href="{{ route('penulis.edit', $item->id) }}"
+                                                        class="btn btn-sm btn-success">
+                                                        Edit
+                                                    </a>
+                                                    <a href="{{ route('penulis.show', $item->id) }}"
+                                                        class="btn btn-sm btn-warning">
+                                                        Show
+                                                    </a>
+
+                                                    <button class="btn btn-sm btn-danger" type="submit"
+                                                        onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                                        Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

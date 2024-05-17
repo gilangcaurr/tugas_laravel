@@ -5,14 +5,16 @@ use App\Models\Sekolah;
 use Illuminate\Support\Facades\Route; 
 use App\Models\Siswa;  
 use App\Models\Film;   
-use App\Models\Artikel;
+use App\Models\Artikel; 
+use App\Models\Genre;
 // import controller 
 use App\Http\Controllers\MyController; 
 // import Movie Controller 
 use App\Http\Controllers\MovieController; 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\GenreController; 
-use App\Http\Controllers\BukuController;
+use App\Http\Controllers\BukuController; 
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,5 +97,15 @@ use App\Http\Controllers\PenulisController;
 Route::resource('penulis', PenulisController::class); 
 Route::resource('buku', BukuController::class);
 Route::resource('genre', GenreController::class);
+ 
+Route::group(['prefix'=>'admin','middleware'=> ['auth']], function () {
+    Route::resource('penulis', PenulisController::class); 
+    Route::resource('genre', GenreController::class);
+    Route::resource('buku', BukuController::class);
 
+}); 
+
+// Route guest(tamu / pengunjung) 
+Route::get('/', [FrontController::class, 'buku']); 
+Route::get('buku/{id}', [FrontController::class, 'detailBuku']);
 
